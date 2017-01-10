@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="format-detection" content="telephone=no, email=no, adress=no" />
+
+  <script>
+    (function () {
+      var phoneScale = parseInt(window.screen.width) / 750;
+      document.write('<meta name="viewport" content="width=750, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', user-scalable=no">');
+    })();
+  </script>
+
+<title>南极圈线下活动地址填写</title>
+
+<link rel="stylesheet" href="https://static1.weidai.com.cn/static/common/weiApp/webH5/lib/css/normalize.css?_VER_" charset="utf-8">
+<link rel="stylesheet" href="https://static1.weidai.com.cn/static/common/weiApp/components/WDAlertBox/css/WDAlertBox.css?_VER_" charset="utf-8">
+<link rel="stylesheet" href="./styles/index.css?_VER_" charset="utf-8">
+</head>
+
+<body>
+  <div class="notice hide"></div>
+  <div class="container">
+    <div class="fragment fragment_01"></div>
+    <div class="fragment fragment_02"></div>
+    <div class="fragment fragment_03"></div>
+    <div class="fragment fragment_04"></div>
+    <div class="fragment fragment_05"></div>
+    <div class="fragment fragment_06"></div>
+    <div class="fragment fragment_07"></div>
+    <div class="fragment fragment_08"></div>
+    <div class="fragment fragment_09"></div>
+    <div class="fragment fragment_10"></div>
+    <div class="actionSection">
+      <div class="loginSection">
+        <a class="actionBtn loginBtn">登录</a>
+        <div class="actionText loginText hide">
+          <span class="title">当前账户：</span>
+          <span class="username"></span>
+          <a class="logoutBtn">退出</a>
+        </div>
+      </div>
+      <div class="locationSection">
+        <a class="actionBtn locationBtn">填写我的地址</a>
+        <div class="actionText locationText hide">
+          <span class="title">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAbCAYAAACeA7ShAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowZGQ5YWZiYy01NGJkLTQxNzMtYWQwNy1hNmNkMjU2N2Y2MzYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTg0RjAxNTVEMzI3MTFFNkI3MTNEMzNFRDI4NjMyRDIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTg0RjAxNTREMzI3MTFFNkI3MTNEMzNFRDI4NjMyRDIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ODQwODdkNjctNDVmOS1iZjQ1LWJkMzktNWM2ODM5MjQ4NDZhIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjBkZDlhZmJjLTU0YmQtNDE3My1hZDA3LWE2Y2QyNTY3ZjYzNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqLvsyIAAAGKSURBVHjanJU7S0NBEIU3F1+EoCAKPhtR0C6FhY2Cjb2dpb0INhYKopCIRUBs/AmCP8HOQiTRQixUhAgBJa0YDIiP63oGd+U67Cv3wFdkZvbczGYyN5JSCgOjYBuUQUP+6hVcggIYM53jgQ6wBz6kW19gH3TZzHrAuWxNF6Cfm7WBU5lOFdXRn9mm58CnJ7+rzXpB01BAF74OBtQDqZ018GKofQODVLRqMcpbfukp8Gw4s0HJE0NixWKkWTacOaNEnQVpLHIes07D1TQiIUSf+K8aaAq33kGVxbojlUgqJ8KUZZ9jMntkwSEw7jEaARMsViezsqG44DHbAhkWq9BlLlgGsQgidvEZx4AvUpKecAXyhm9wC47AExgGS5a6BzCpnzgDYple83xrlFIaHZpWEO2muxaNaskB55M9rRZfiL7BnGvTCrVOQnTgW9v6f3fjMaqCbIiZr11qbzbkhZKkGNpeiFk7uGZG9/yNFGom1LbV+z9Wwy3SmhE7yqzkqw0xo3aPXe1pfgQYAMebx1jDqBnnAAAAAElFTkSuQmCC">
+            我的地址
+          </span>
+          <br>
+          <span class="address"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dialogBox hide">
+    <div class="dialogMask"></div>
+    <div class="dialogContainer">
+      <div class="titleSection">
+        <span class="maintitle">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAmCAYAAADX7PtfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowZGQ5YWZiYy01NGJkLTQxNzMtYWQwNy1hNmNkMjU2N2Y2MzYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUMxOTgxOUREMzQ2MTFFNjg1QzBFOTE2MDA2NUJFOEEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUMxOTgxOUNEMzQ2MTFFNjg1QzBFOTE2MDA2NUJFOEEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ZTUyYzM4MmUtZDU2ZS04YzQxLThmYTMtMDgxN2NkZDE2NzhhIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjBkZDlhZmJjLTU0YmQtNDE3My1hZDA3LWE2Y2QyNTY3ZjYzNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqMYlpAAAAJkSURBVHjatJdPSFRRFMbfG0fHHKlxKagUA4U0EgaT4CYQd+bCRYsiMYjKTRS5aNWqTQtp0aogceGqTRSBbpRWSSSl1aakcRCHitKpCGbIYeb2HbgPhuHdc8978/rgt7rnnu+98965f1yllGNRDJwGY2AIHAVdwAU/wWfwGiyBZVBls5GhgTi4CvJKrgK4AdpMeU1mGbChwusjyEoNJ0BJNa99MGkzJLOqilZTJsMBUFbRqwKGPR9X/6VxsA4yjkxKExPG58FxUPYmXBaYfQO3wDHQpkmD62DHMvcIuOm1RQxsW8ryGHQyLZQAjyw5dimOgkctgU+Ay5jVM2fJdZaCZpmAIkgJzYgDuvlNmqNveIqp/UPwy5GrDO4z49mY/vAmLTrBxc1Jk2GSCdgJYbjNjHWQYYUJaA9h2MGMVcmwyARkQhhyc4pk+J4JOB/C8Bwz9o4MV5mACTAc8O0uMuOvqHd6QY3pnS/gsKAHu0HO0vgZL/ipJXCPVglmxTmjH4zTav1ucRK8EZTsE3gGcqCmF+VxMCCYOwJe1D/lPfX/NN+4H5ISYE34tEFEe+EJ8Mdp2ED/ggtgP0IzKvukZ2Y6Js5EWMo7klMblXklArM10NqY3zWcvHvAB5AKWcoSGASbfsd4PxXAdBPfbsbPzHbUJxZClPI5dyRxLZeZQ3px7xO+2Q+9nn7nbkacfuvfuiY0vMSZSUrqcVdQygeSXFJDun69Zcw2QTJKQ6LfcPeomK5mzRoS13wMbwfJEdSQ/uqlOrOXoCVIDltb+Klbr0IJvQtsBZkcD7GKfAVXwMGgZqR/AgwAxlmdAeSrdOIAAAAASUVORK5CYII=">
+            填写地址信息
+          </span>
+        <br>
+        <span class="subtitle">
+            （请确保信息无误，方便给您寄送奖品！）
+          </span>
+      </div>
+      <div class="contentSection">
+        <div class="form">
+          <div class="item">
+            <label class="explain">姓名</label>
+            <div class="inputArea">
+              <input class="inputStyle consignee" type="text">
+            </div>
+            <div class="errorMsg"></div>
+          </div>
+          <div class="item">
+            <label class="explain">手机号</label>
+            <div class="inputArea">
+              <input class="inputStyle consignmobile" type="text">
+            </div>
+            <div class="errorMsg"></div>
+          </div>
+          <div class="item">
+            <label class="explain">省市</label>
+            <div class="inputArea">
+              <select class="inputStyle province">
+              </select>
+              <select class="inputStyle city">
+              </select>
+              <!--<input class="inputStyle district" type="text"> 区
+              <input class="inputStyle street" type="text"> 路
+              <input class="inputStyle houseNum" type="text"> 号-->
+            </div>
+            <div class="errorMsg"></div>
+          </div>
+          <div class="item">
+            <label class="explain">详细地址</label>
+            <div class="inputArea">
+              <!--<input class="inputStyle address" type="text">-->
+              <textarea class="inputStyle address"></textarea>
+            </div>
+            <div class="errorMsg"></div>
+          </div>
+        </div>
+        <div class="action">
+          <a class="submitBtn">确定</a>
+          <br>
+          <span class="prompt">信息一经确认无法修改，请谨慎填写！</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js?_VER_"></script>
+  <script src="https://static1.weidai.com.cn/static/common/weiApp/webH5/lib/js/jquery-1.10.1.min.js?_VER_"></script>
+  <script src="https://static1.weidai.com.cn/static/common/weiApp/components/WDWXShare/WDWXShare.js?_VER_"></script>
+  <script src="https://static1.weidai.com.cn/static/common/weiApp/components/WDAlertBox/WDAlertBox.js?_VER_"></script>
+  <script src="https://static1.weidai.com.cn/static/common/weiApp/components/WDLoginModel/WDLoginModel.js?_VER_"></script>
+  <script src="./scripts/index.js?_VER_"></script>
+</body>
+
+</html>

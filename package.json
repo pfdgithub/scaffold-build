@@ -1,0 +1,27 @@
+{
+  "name": "scaffold-build",
+  "version": "1.0.0",
+  "description": "脚手架，不同业务类型的构建方案。",
+  "scripts": {
+    "clean": "gulp clean",
+    "state": "gulp state",
+    "build:dev": "gulp build --env=dev --npm=cnpm --day=1",
+    "build:test": "gulp build --env=test",
+    "build:prod": "gulp build --env=prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.weidai.work/fed/h5.activity"
+  },
+  "homepage": "http://git.weidai.work/fed/h5.activity",
+  "devDependencies": {
+    "del": "^2.2.2",
+    "glob": "^7.1.1",
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.8",
+    "ignore": "^3.2.0",
+    "shelljs": "^0.7.6",
+    "yargs": "^6.6.0"
+  },
+  "dependencies": {}
+}

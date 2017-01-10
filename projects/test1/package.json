@@ -1,0 +1,19 @@
+{
+  "name": "h5.activity.antarctic-circle",
+  "version": "1.0.0",
+  "description": "南极圈线下活动地址填写",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "http://git.weidai.work/fed/h5.activity/tree/master/projects/antarcticCircle"
+  },
+  "homepage": "http://git.weidai.work/fed/h5.activity/tree/master/projects/antarcticCircle",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-replace": "^0.5.4",
+    "gulp-uglify": "^2.0.0"
+  },
+  "dependencies": {}
+}
