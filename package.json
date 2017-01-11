@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "gulp clean",
     "state": "gulp state",
-    "server": "http-server -o -p 8000",
+    "server": "http-server ./projects -o -p 8000",
     "build:dev": "gulp build --env=dev --npm=cnpm --day=1",
     "build:test": "gulp build --env=test",
     "build:prod": "gulp build --env=prod"
