@@ -12,9 +12,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://git.weidai.work/fed/h5.activity"
+    "url": "http://git.weidai.work/liping/scaffold-build"
   },
-  "homepage": "http://git.weidai.work/fed/h5.activity",
+  "homepage": "http://git.weidai.work/liping/scaffold-build",
   "devDependencies": {
     "del": "^2.2.2",
     "glob": "^7.1.1",
