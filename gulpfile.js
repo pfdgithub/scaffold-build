@@ -3,6 +3,7 @@ let util = require('gulp-util');
 let filter = require("gulp-filter");
 let replace = require('gulp-replace');
 let uglify = require("gulp-uglify");
+let sourcemaps = require('gulp-sourcemaps');
 let minifyCss = require("gulp-minify-css");
 let minifyHtml = require("gulp-minify-html");
 let del = require('del');
@@ -21,6 +22,7 @@ let envEnum = {
 let ver = '_=' + new Date().getTime(); // 时间戳
 let src = 'src'; // 源文件目录
 let dist = 'dist'; // 构建文件目录
+let map = 'map'; // sourceMap 目录
 let maxRecursiveDepth = 3; // 最大递归深度
 let validDay = (yargs.argv.day && typeof (yargs.argv.day) === 'number') ? yargs.argv.day : 7; // 有效时间间隔（天）——在此时间段内的修改过的项目认为有效
 shell.config.silent = true; // 禁用 shelljs 控制台输出
@@ -198,7 +200,7 @@ let copy = () => {
 };
 
 // 压缩文件
-let minify = () => {
+let minify = (debug) => {
   let ver = getPkgVersion();
   let targetPath = `${dist}/${ver}/`;
 
@@ -208,9 +210,11 @@ let minify = () => {
   return gulp.src(sourcePaths, {
     base: src
   }).pipe(thirdparty) // 过滤第三方库
-    // .pipe(replace(/_VER_/g, ver)) // 清理缓存
+    // .pipe(replace(/_VER_/g, ver)) // 避免缓存
     .pipe(jsFilter) // 压缩 js 文件
+    .pipe(debug ? sourcemaps.init() : util.noop()) // 生成 sourceMap
     .pipe(uglify())
+    .pipe(debug ? sourcemaps.write(map) : util.noop())
     .pipe(jsFilter.restore)
     .pipe(cssFilter) // 压缩 css 文件
     .pipe(minifyCss())
@@ -239,11 +243,13 @@ let cleanBuild = (cb) => {
 let buildProject = () => {
   let env = getProcessEnv();
 
-  // 生产环境压缩，其他不压缩
-  if (env == envEnum.prod) {
+  if (env == envEnum.prod) { // 生产环境压缩
     return minify();
   }
-  else {
+  else if (env == envEnum.test) { // 测试生成 sourceMap
+    return minify(true);
+  }
+  else { // 其他环境直接复制
     return copy();
   }
 };
