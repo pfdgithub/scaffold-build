@@ -22,7 +22,7 @@ let envEnum = {
 let ver = '_=' + new Date().getTime(); // 时间戳
 let src = 'src'; // 源文件目录
 let dist = 'dist'; // 构建文件目录
-let map = 'map'; // sourceMap 目录
+let map = 'sourceMap'; // sourceMap 目录
 let maxRecursiveDepth = 3; // 最大递归深度
 let validDay = (yargs.argv.day && typeof (yargs.argv.day) === 'number') ? yargs.argv.day : 7; // 有效时间间隔（天）——在此时间段内的修改过的项目认为有效
 shell.config.silent = true; // 禁用 shelljs 控制台输出
