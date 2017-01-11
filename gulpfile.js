@@ -203,17 +203,16 @@ let copyDist = (project) => {
 };
 
 // 清理构建文件
-let cleanBuild = () => {
-  try {
-    let paths = del.sync([`${distRootDir}/**`, `${projRootDir}/*/${distRootDir}/**`], {
-      dryRun: false
-    });
-
+let cleanBuild = (cb) => {
+  del([`${distRootDir}/**`, `${projRootDir}/*/${distRootDir}/**`], {
+    dryRun: false
+  }).then((paths) => {
     log('cleanBuild', paths.join('\n'));
-  }
-  catch (err) {
-    throw getError('cleanBuild', err);
-  }
+    cb();
+  }).catch((err) => {
+    let gErr = getError('cleanBuild', err);
+    cb(gErr);
+  });
 };
 
 // 项目状态
@@ -251,8 +250,8 @@ let buildProject = () => {
   });
 };
 
-gulp.task('clean', () => {
-  cleanBuild();
+gulp.task('clean', (cb) => {
+  cleanBuild(cb);
 });
 
 gulp.task('state', () => {
