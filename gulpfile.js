@@ -254,14 +254,14 @@ gulp.task('clean', (cb) => {
   cleanBuild(cb);
 });
 
-gulp.task('state', () => {
+gulp.task('state', ['clean'], () => {
   projectState();
 });
 
-gulp.task('build', () => {
+gulp.task('build', ['clean'], () => {
   buildProject();
 });
 
 gulp.task('default', () => {
-  log('[TASK] default', 'Please use npm script');
+  log('default', 'Please use npm script');
 });
