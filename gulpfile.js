@@ -9,7 +9,7 @@ let shell = require('shelljs');
 
 let distRootDir = 'dist'; // 构建根目录——全部项目构建文件的目录
 let projRootDir = 'projects'; // 项目根目录——全部项目所在的目录
-let projIgFile = `${projRootDir}/.projignore`; // 配置忽略项目——明确过滤不参与构建的项目
+let projIgFile = `${projRootDir}/.buildignore`; // 配置忽略项目——明确过滤不参与构建的项目
 
 shell.config.silent = true; // 禁用 shelljs 控制台输出
 let envEnum = { // 环境枚举
