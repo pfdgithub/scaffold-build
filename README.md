@@ -37,6 +37,7 @@ projects/XXX/package.json [单]项目 npm 配置文件。
 
 npm run clean 清理[多]项目构建根目录和[单]项目构建目录。  
 npm run state 检查可参与构建的有效项目列表。  
+npm run server 启动本地静态服务器。  
 npm run build:dev 构建项目（开发环境）。  
 npm run build:test 构建项目（测试环境）。  
 npm run build:prod 构建项目（生产环境）。  
