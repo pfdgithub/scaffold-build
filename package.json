@@ -1,0 +1,33 @@
+{
+  "name": "scaffold-build",
+  "version": "1.0.0",
+  "description": "脚手架，不同业务类型的构建方案。",
+  "scripts": {
+    "clean": "gulp clean",
+    "state": "gulp state",
+    "server": "http-server ./src -o -p 8000",
+    "build:dev": "gulp build --env=dev --day=1",
+    "build:test": "gulp build --env=test",
+    "build:prod": "gulp build --env=prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.weidai.work/liping/scaffold-build"
+  },
+  "homepage": "http://git.weidai.work/liping/scaffold-build",
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-filter": "^5.0.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-replace": "^0.5.4",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.8",
+    "http-server": "^0.9.0",
+    "run-sequence": "^1.2.2",
+    "shelljs": "^0.7.6",
+    "yargs": "^6.6.0"
+  },
+  "dependencies": {}
+}
