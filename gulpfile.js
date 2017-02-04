@@ -28,7 +28,7 @@ let log = (name, ...message) => {
 // 获取错误
 let getError = (name, message) => {
   return new util.PluginError(`[ROOT] ${name}`, message, {
-    showStack: true
+    // showStack: true
   });
 };
 
