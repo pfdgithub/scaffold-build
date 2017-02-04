@@ -52,7 +52,7 @@ let log = (name, ...message) => {
 // 获取错误
 let getError = (name, message) => {
   return new util.PluginError(`${name}`, message, {
-    showStack: true
+    // showStack: true
   });
 };
 
