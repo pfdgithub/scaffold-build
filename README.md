@@ -26,7 +26,6 @@ package.json 项目 npm 配置文件。
 建议以 package.json 文件的 scripts 节点作为命令行入口。  
 
 npm run clean 清理项目构建目录。  
-npm run state 检查可参与构建的有效目录列表。  
 npm run server 启动本地静态服务器。  
 npm run build:dev 构建项目（开发环境）。  
 npm run build:test 构建项目（测试环境）。  
