@@ -4,9 +4,8 @@
   "description": "脚手架，不同业务类型的构建方案。",
   "scripts": {
     "clean": "gulp clean",
-    "state": "gulp state",
     "server": "http-server ./src -o -p 8000",
-    "build:dev": "gulp build --env=dev --day=1",
+    "build:dev": "gulp build --env=dev",
     "build:test": "gulp build --env=test",
     "build:prod": "gulp build --env=prod"
   },
@@ -26,7 +25,6 @@
     "gulp-util": "^3.0.8",
     "http-server": "^0.9.0",
     "run-sequence": "^1.2.2",
-    "shelljs": "^0.7.6",
     "yargs": "^6.6.0"
   },
   "dependencies": {}
