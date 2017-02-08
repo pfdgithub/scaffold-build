@@ -256,6 +256,7 @@ gulp.task('clean', (cb) => {
   cleanBuild(cb);
 });
 
+// 测试有效目录
 gulp.task('state', ['clean'], () => {
   pathState();
 });
