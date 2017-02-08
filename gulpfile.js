@@ -1,7 +1,6 @@
 let gulp = require('gulp');
 let util = require('gulp-util');
 let filter = require("gulp-filter");
-let replace = require('gulp-replace');
 let uglify = require("gulp-uglify");
 let sourcemaps = require('gulp-sourcemaps');
 let minifyCss = require("gulp-minify-css");
@@ -19,7 +18,6 @@ let envEnum = {
   test: 'test',
   prod: 'prod'
 };
-let ver = '_=' + new Date().getTime(); // 时间戳
 let src = 'src'; // 源文件目录
 let dist = 'dist'; // 构建文件目录
 let map = 'sourceMap'; // sourceMap 目录
@@ -210,7 +208,6 @@ let minify = (debug) => {
   return gulp.src(sourcePaths, {
     base: src
   }).pipe(thirdparty) // 过滤第三方库
-    // .pipe(replace(/_VER_/g, ver)) // 避免缓存
     .pipe(jsFilter) // 压缩 js 文件
     .pipe(debug ? sourcemaps.init() : util.noop()) // 生成 sourceMap
     .pipe(uglify())
