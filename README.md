@@ -53,5 +53,5 @@ npm run build:prod 构建项目（生产环境）。
 5. 遍历过滤后的项目列表，检查该项目目录在最近几天的 Git 日志，有记录才认为有效，得到有效项目列表。  
 6. 遍历有效项目列表，检查是否存在 projects/XXX/gulpfile.js 和 projects/XXX/package.json 文件。  
 7. 如果不存在，直接复制 projects/XXX/ 中文件（夹），至 dist/XXX/ 目录。  
-8. 如果存在，在该项目目录先执行 npm install 安装 npm 依赖，再执行 gulp build --env=<dev|test|prod> 调用构建任务，最后复制 projects/XXX/dist/ 中文件（夹），至 dist/XXX/ 目录。  
+8. 如果存在，在该项目目录先执行 cnpm install 安装 npm 依赖，再执行 gulp build --env=<dev|test|prod> 调用构建任务，最后复制 projects/XXX/dist/ 中文件（夹），至 dist/XXX/ 目录。  
 9. 重复每个有效项目的构建流程，直至全部结束。  

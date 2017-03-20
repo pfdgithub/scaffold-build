@@ -17,7 +17,7 @@ let envEnum = { // 环境枚举
   test: 'test',
   prod: 'prod'
 };
-let npmCommand = (yargs.argv.npm && typeof (yargs.argv.npm) === 'string') ? yargs.argv.npm : 'npm'; // 默认 npm 命令
+let npmCommand = (yargs.argv.npm && typeof (yargs.argv.npm) === 'string') ? yargs.argv.npm : 'cnpm'; // 默认 npm 命令
 let validDay = (yargs.argv.day && typeof (yargs.argv.day) === 'number') ? yargs.argv.day : 7; // 有效时间间隔（天）——在此时间段内的修改过的项目认为有效
 
 // 输出日志
