@@ -18,7 +18,7 @@ let envEnum = { // 环境枚举
   prod: 'prod'
 };
 let npmCommand = (yargs.argv.npm && typeof (yargs.argv.npm) === 'string') ? yargs.argv.npm : 'cnpm'; // 默认 npm 命令
-let validDay = (yargs.argv.day && typeof (yargs.argv.day) === 'number') ? yargs.argv.day : 7; // 有效时间间隔（天）——在此时间段内的修改过的项目认为有效
+let validDay = (yargs.argv.day && typeof (yargs.argv.day) === 'number') ? yargs.argv.day : 30; // 有效时间间隔（天）——在此时间段内的修改过的项目认为有效
 
 // 输出日志
 let log = (name, ...message) => {
@@ -53,13 +53,7 @@ let getProcessEnv = () => {
 
 // 获取忽略项目名
 let getIgnoreProjects = () => {
-  let str = '';
-
-  try {
-    str = fs.readFileSync(projIgFile).toString();
-  }
-  catch (err) {
-  }
+  let str = fs.readFileSync(projIgFile).toString();
 
   let ig = ignore().add(str);
   log('getIgnoreProjects', ig);
@@ -223,8 +217,14 @@ let projectState = () => {
   validProjects.forEach((project) => {
     let exists = checkNpmGulpCfg(project);
 
-    if (exists.pkgfile && exists.gulpfile) {
-      log('projectState', project, 'Call [npmInstall] [gulpTask] [copyDist]');
+    if (exists.pkgfile || exists.gulpfile) {
+      if (exists.pkgfile) {
+        log('projectState', project, 'Call [npmInstall]');
+      }
+      if (exists.gulpfile) {
+        log('projectState', project, 'Call [gulpTask]');
+      }
+      log('projectState', project, 'Call [copyDist]');
     }
     else {
       log('projectState', project, 'Call [copyProject]');
@@ -241,9 +241,13 @@ let buildProject = () => {
   validProjects.forEach((project) => {
     let exists = checkNpmGulpCfg(project);
 
-    if (exists.pkgfile && exists.gulpfile) {
-      npmInstall(project);
-      gulpTask(project, 'build', args);
+    if (exists.pkgfile || exists.gulpfile) {
+      if (exists.pkgfile) {
+        npmInstall(project);
+      }
+      if (exists.gulpfile) {
+        gulpTask(project, 'build', args);
+      }
       copyDist(project);
     }
     else {
