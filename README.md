@@ -14,8 +14,8 @@ simple 最简化的构建方案。
 活动的特点是高频率，低技术要求，短生命周期，会产生大量废弃项目。  
 针对这些特点，该方案只处理有效项目，不限定每个项目的技术选型，只需按照约定放置构建脚本和输出文件即可。  
 项目需要放置于 projects/ 目录中，可使用 projects/.buildignore 忽略指定项目目录。  
-若项目不需要 npm 和 gulp 处理，则可直接将文件放置于 projects/XXX/ 目录中。构建后该目录中文件（夹）将被复制到 dist/XXX/ 目录。  
-若项目需要 npm 和 gulp 处理，则必须存在 projects/XXX/gulpfile.js 和 projects/XXX/package.json 文件。构建后 projects/XXX/dist/ 中文件（夹），将被复制到 dist/XXX/ 目录   
+若项目不需要 npm 或 gulp 处理，则可直接将文件放置于 projects/XXX/ 目录中。构建后该目录中文件（夹）将被复制到 dist/XXX/ 目录。  
+若项目需要 npm 或 gulp 处理，则需要存在 projects/XXX/gulpfile.js 或 projects/XXX/package.json 文件。构建后 projects/XXX/dist/ 中文件（夹），将被复制到 dist/XXX/ 目录。  
 
 # 目录结构
 
@@ -51,7 +51,7 @@ npm run build:prod 构建项目（生产环境）。
 3. 获取 projects/ 目录下的子目录列表，作为全部项目列表。  
 4. 在全部项目列表中排除被忽略的项目，得到过滤后的项目列表。  
 5. 遍历过滤后的项目列表，检查该项目目录在最近几天的 Git 日志，有记录才认为有效，得到有效项目列表。  
-6. 遍历有效项目列表，检查是否存在 projects/XXX/gulpfile.js 和 projects/XXX/package.json 文件。  
+6. 遍历有效项目列表，检查是否存在 projects/XXX/gulpfile.js 或 projects/XXX/package.json 文件。  
 7. 如果不存在，直接复制 projects/XXX/ 中文件（夹），至 dist/XXX/ 目录。  
-8. 如果存在，在该项目目录先执行 cnpm install 安装 npm 依赖，再执行 gulp build --env=<dev|test|prod> 调用构建任务，最后复制 projects/XXX/dist/ 中文件（夹），至 dist/XXX/ 目录。  
+8. 如果存在，根据需要在该项目目录先执行 cnpm install 安装 npm 依赖，再执行 gulp build --env=<dev|test|prod> 调用构建任务，最后复制 projects/XXX/dist/ 中文件（夹），至 dist/XXX/ 目录。  
 9. 重复每个有效项目的构建流程，直至全部结束。  
