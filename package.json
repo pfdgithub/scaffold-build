@@ -6,7 +6,7 @@
     "clean": "gulp clean",
     "state": "gulp state",
     "server": "http-server ./projects -o -p 8000",
-    "build:dev": "gulp build --env=dev --day=1",
+    "build:dev": "gulp build --env=dev --day=7",
     "build:test": "gulp build --env=test",
     "build:prod": "gulp build --env=prod"
   },
