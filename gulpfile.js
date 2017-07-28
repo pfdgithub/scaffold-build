@@ -143,11 +143,34 @@ let npmInstall = (project) => {
     throw getError('npmInstall', stderr);
   }
   else if (stdout.length > 0) {
-    pass = true;
     log('npmInstall', project, stdout);
   }
   else {
     log('npmInstall', project, 'No output');
+  }
+};
+
+// 执行 npm 脚本
+let npmScript = (project, script, args) => {
+  let command = `npm run ${script || ''} -- ${args || ''}`;
+
+  log('npmScript', project, command);
+
+  let shellObj = shell.exec(command, {
+    cwd: project
+  });
+
+  let code = shellObj.code;
+  let stderr = shellObj.stderr;
+  let stdout = shellObj.stdout;
+  if (code !== 0 && stderr.length > 0) {
+    throw getError('npmScript', stderr);
+  }
+  else if (stdout.length > 0) {
+    log('npmScript', project, stdout);
+  }
+  else {
+    log('npmScript', project, 'No output');
   }
 };
 
@@ -168,7 +191,6 @@ let gulpTask = (project, task, args) => {
     throw getError('gulpTask', stderr);
   }
   else if (stdout.length > 0) {
-    pass = true;
     log('gulpTask', project, stdout);
   }
   else {
