@@ -6,10 +6,12 @@ let glob = require('glob');
 let yargs = require('yargs');
 let ignore = require('ignore');
 let shell = require('shelljs');
+let iconv = require('iconv-lite');
 
 let distRootDir = 'dist'; // 构建根目录——全部项目构建文件的目录
 let projRootDir = 'projects'; // 项目根目录——全部项目所在的目录
 let projIgFile = `${projRootDir}/.buildignore`; // 配置忽略项目——明确过滤不参与构建的项目
+let fixMessyCode = false; // 处理乱码（Windows 下 CMD 默认使用 GBK 代码页）
 
 shell.config.silent = true; // 禁用 shelljs 控制台输出
 let envEnum = { // 环境枚举
@@ -77,16 +79,20 @@ let checkProjectGitLog = (project) => {
 
   log('checkProjectGitLog', project, command);
 
-  let shellObj = shell.exec(command);
+  let shellObj = shell.exec(command, {
+    encoding: fixMessyCode ? 'base64' : 'utf8'
+  });
 
   let code = shellObj.code;
   let stderr = shellObj.stderr;
   let stdout = shellObj.stdout;
   if (code !== 0 && stderr.length > 0) {
+    stderr = fixMessyCode ? iconv.decode(iconv.encode(stderr, 'base64'), 'GBK') : stderr;
     throw getError('checkProjectGitLog', stderr);
   }
   else if (stdout.length > 0) {
     pass = true;
+    stdout = fixMessyCode ? iconv.decode(iconv.encode(stdout, 'base64'), 'GBK') : stdout;
     log('checkProjectGitLog', project, stdout);
   }
   else {
@@ -133,16 +139,19 @@ let npmInstall = (project) => {
   log('npmInstall', project, command);
 
   let shellObj = shell.exec(command, {
-    cwd: project
+    cwd: project,
+    encoding: fixMessyCode ? 'base64' : 'utf8'
   });
 
   let code = shellObj.code;
   let stderr = shellObj.stderr;
   let stdout = shellObj.stdout;
   if (code !== 0 && stderr.length > 0) {
+    stderr = fixMessyCode ? iconv.decode(iconv.encode(stderr, 'base64'), 'GBK') : stderr;
     throw getError('npmInstall', stderr);
   }
   else if (stdout.length > 0) {
+    stdout = fixMessyCode ? iconv.decode(iconv.encode(stdout, 'base64'), 'GBK') : stdout;
     log('npmInstall', project, stdout);
   }
   else {
@@ -157,16 +166,19 @@ let npmScript = (project, script, args) => {
   log('npmScript', project, command);
 
   let shellObj = shell.exec(command, {
-    cwd: project
+    cwd: project,
+    encoding: fixMessyCode ? 'base64' : 'utf8'
   });
 
   let code = shellObj.code;
   let stderr = shellObj.stderr;
   let stdout = shellObj.stdout;
   if (code !== 0 && stderr.length > 0) {
+    stderr = fixMessyCode ? iconv.decode(iconv.encode(stderr, 'base64'), 'GBK') : stderr;
     throw getError('npmScript', stderr);
   }
   else if (stdout.length > 0) {
+    stdout = fixMessyCode ? iconv.decode(iconv.encode(stdout, 'base64'), 'GBK') : stdout;
     log('npmScript', project, stdout);
   }
   else {
@@ -181,16 +193,19 @@ let gulpTask = (project, task, args) => {
   log('gulpTask', project, command);
 
   let shellObj = shell.exec(command, {
-    cwd: project
+    cwd: project,
+    encoding: fixMessyCode ? 'base64' : 'utf8'
   });
 
   let code = shellObj.code;
   let stderr = shellObj.stderr;
   let stdout = shellObj.stdout;
   if (code !== 0 && stderr.length > 0) {
+    stderr = fixMessyCode ? iconv.decode(iconv.encode(stderr, 'base64'), 'GBK') : stderr;
     throw getError('gulpTask', stderr);
   }
   else if (stdout.length > 0) {
+    stdout = fixMessyCode ? iconv.decode(iconv.encode(stdout, 'base64'), 'GBK') : stdout;
     log('gulpTask', project, stdout);
   }
   else {
