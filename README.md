@@ -6,7 +6,8 @@
 
 activity 活动类型的构建方案。  
 legacy 遗留项目的构建方案。  
-simple 最简化的构建方案。  
+simple 最简化的构建方案。    
+
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
 | col 3 is      | right-aligned | $1600 |
