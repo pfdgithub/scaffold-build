@@ -1,5 +1,6 @@
 let gulp = require('gulp');
-let util = require('gulp-util');
+let gLog = require('fancy-log');
+let gError = require('plugin-error');
 let fs = require('fs');
 let del = require('del');
 let glob = require('glob');
@@ -19,17 +20,17 @@ let envEnum = { // 环境枚举
   test: 'test',
   prod: 'prod'
 };
-let npmCommand = (yargs.argv.npm && typeof (yargs.argv.npm) === 'string') ? yargs.argv.npm : 'cnpm'; // 默认 npm 命令
+let npmCommand = (yargs.argv.npm && typeof (yargs.argv.npm) === 'string') ? yargs.argv.npm : 'npm'; // 默认 npm 命令
 let validDay = (yargs.argv.day && typeof (yargs.argv.day) === 'number') ? yargs.argv.day : 30; // 有效时间间隔（天）——在此时间段内的修改过的项目认为有效
 
 // 输出日志
 let log = (name, ...message) => {
-  util.log(`Log in plugin '[ROOT] ${name}'`, '\nMessage:\n    ', ...message);
+  gLog(`Log in plugin '[ROOT] ${name}'`, '\nMessage:\n    ', ...message);
 };
 
 // 获取错误
 let getError = (name, message) => {
-  return new util.PluginError(`[ROOT] ${name}`, message, {
+  return new gError(`[ROOT] ${name}`, message, {
     // showStack: true
   });
 };
@@ -161,7 +162,7 @@ let npmInstall = (project) => {
 
 // 执行 npm 脚本
 let npmScript = (project, script, args) => {
-  let command = `npm run ${script || ''} -- ${args || ''}`;
+  let command = `${npmCommand} run ${script || ''} -- ${args || ''}`;
 
   log('npmScript', project, command);
 
@@ -237,10 +238,11 @@ let copyDist = (project) => {
 
 // 清理构建文件
 let cleanBuild = (cb) => {
-  del([`${distRootDir}/**`, `${projRootDir}/*/${distRootDir}/**`], {
+  let buildOutput = [`${distRootDir}/**`, `${projRootDir}/*/${distRootDir}/**`]; // 编译输出目录
+  del(buildOutput, {
     dryRun: false
   }).then((paths) => {
-    log('cleanBuild', paths.join('\n'));
+    log('cleanBuild', `${buildOutput} has been cleaned`);
     cb();
   }).catch((err) => {
     let gErr = getError('cleanBuild', err);
