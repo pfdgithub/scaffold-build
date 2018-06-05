@@ -1,5 +1,7 @@
 let gulp = require('gulp');
-let util = require('gulp-util');
+let gLog = require('fancy-log');
+let gError = require('plugin-error');
+let through = require('through2');
 let filter = require("gulp-filter");
 let uglify = require("gulp-uglify");
 let sourcemaps = require('gulp-sourcemaps');
@@ -39,12 +41,12 @@ let htmlFilter = filter([`${src}/**/*.html`], {
 
 // 输出日志
 let log = (name, ...message) => {
-  util.log(`Log in plugin '${name}'`, '\nMessage:\n    ', ...message);
+  gLog(`Log in plugin '${name}'`, '\nMessage:\n    ', ...message);
 };
 
 // 获取错误
 let getError = (name, message) => {
-  return new util.PluginError(`${name}`, message, {
+  return new gError(`${name}`, message, {
     // showStack: true
   });
 };
@@ -77,6 +79,24 @@ let getProcessEnv = () => {
   return env;
 };
 
+// 替换预定义文本
+let defineText = () => {
+  let ver = getPkgVersion();
+
+  let defineObj = {
+    '__WD_DEFINE_VER__': JSON.stringify(ver)
+  };
+
+  return replace(/__WD_(\w+)__/g, function (match, p1, offset, string) {
+    let file = this.file.relative;
+    let text = defineObj[match] || match;
+
+    log('defineText', `${match} is replaced by ${text} in file ${file}`);
+
+    return text;
+  }, { skipBinary: true });
+};
+
 // 复制文件
 let copy = () => {
   let ver = getPkgVersion();
@@ -86,7 +106,10 @@ let copy = () => {
 
   return gulp.src(sourcePaths, {
     base: src
-  }).pipe(gulp.dest(targetPath));
+  }).pipe(thirdparty) // 过滤第三方库
+    .pipe(defineText()) // 替换字符串
+    .pipe(thirdparty.restore) // 复制其他文件
+    .pipe(gulp.dest(targetPath));
 };
 
 // 压缩文件
@@ -99,10 +122,11 @@ let minify = (debug) => {
   return gulp.src(sourcePaths, {
     base: src
   }).pipe(thirdparty) // 过滤第三方库
+    .pipe(defineText()) // 替换字符串
     .pipe(jsFilter) // 压缩 js 文件
-    .pipe(debug ? sourcemaps.init() : util.noop()) // 生成 sourceMap
+    .pipe(debug ? sourcemaps.init() : through.obj()) // 生成 sourceMap
     .pipe(uglify())
-    .pipe(debug ? sourcemaps.write(map) : util.noop())
+    .pipe(debug ? sourcemaps.write(map) : through.obj())
     .pipe(jsFilter.restore)
     .pipe(cssFilter) // 压缩 css 文件
     .pipe(minifyCss())
@@ -116,10 +140,11 @@ let minify = (debug) => {
 
 // 清理构建文件
 let cleanBuild = (cb) => {
-  del([`${dist}/**`], {
+  let buildOutput = [`${dist}/**`];
+  del(buildOutput, {
     dryRun: false
   }).then((paths) => {
-    log('cleanBuild', paths.join('\n'));
+    log('cleanBuild', `${buildOutput} has been cleaned`);
     cb();
   }).catch((err) => {
     let gErr = getError('cleanBuild', err);
